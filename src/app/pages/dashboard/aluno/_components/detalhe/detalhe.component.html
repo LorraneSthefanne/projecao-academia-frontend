@@ -1,0 +1,29 @@
+<app-card [titulo]="'1. Informações'">
+  <app-formulario-aluno [isDetalhe]="true" *ngIf="alunoSelecionado"
+                        (salvarEvent)="salvar($event)"></app-formulario-aluno>
+</app-card>
+
+<app-card class="p-mt-2" [titulo]="'2. Frequência'">
+  <p-table [value]="frequencias" [paginator]="true" [rows]="tamanho" [showCurrentPageReport]="true"
+           [(first)]="pagina"
+           styleClass="p-datatable-responsive-demo"
+           [scrollable]="true"
+           currentPageReportTemplate="Apresentando {first} até {last} de {totalRecords} Registros"
+           [rowsPerPageOptions]="[5, 10,25,50]">
+    <ng-template pTemplate="colgroup" let-columns>
+      <colgroup>
+        <col style="width:250px">
+      </colgroup>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Data</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-frequencia>
+      <tr>
+        <td>{{frequencia.dataPresenca}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</app-card>

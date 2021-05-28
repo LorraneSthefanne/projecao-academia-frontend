@@ -1,0 +1,32 @@
+<app-card [titulo]="'1. Marcação de presença'">
+  <form class="p-grid p-fluid" [formGroup]="form" (ngSubmit)="confirmar()">
+    <div class="p-col-12 p-md-4 p-sm-12">
+      <label for="aluno">Aluno</label>
+      <p-autoComplete id="aluno" formControlName="aluno" field="nome" [dropdown]="true" [suggestions]="alunos"
+                      (completeMethod)="pesquisarAluno($event)"
+                      [ngClass]="submitted && formulario.aluno.errors ? 'ng-invalid ng-dirty' : ''"></p-autoComplete>
+
+    </div>
+    <div class="p-col-12 p-md-4 p-sm-12">
+      <label>Data</label>
+      <p-calendar
+        inputId="icon"
+        id="data"
+        [showIcon]="true"
+        dateFormat="dd/mm/yy"
+        [dataType]="'string'"
+        [disabled]="true"
+        formControlName="data"
+      ></p-calendar>
+    </div>
+    <div class="p-col-12 p-sm-12 p-md-4">
+      <button
+        type="submit"
+        pButton
+        pRipple
+        label="Confirmar"
+        class="p-col-12 p-button p-mt-3"
+      ></button>
+    </div>
+  </form>
+</app-card>
